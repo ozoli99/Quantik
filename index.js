@@ -154,7 +154,22 @@ function handleFigureLeftClick(event) {
 }
 
 function handleNewGameButtonClick() {
+    state.state = GameState.NEW_GAME;
 
+    let savedGamesArray = localStorage.getItem("savedGames") ? JSON.parse(localStorage.getItem("savedGames")) : [];
+    for (const savedGame of savedGamesArray) {
+        if (savedGame.statistics.firstPlayersName === state.statistics.firstPlayersName && savedGame.statistics.secondPlayersName === state.statistics.secondPlayersName) {
+            const ind = savedGamesArray.findIndex(game => game.statistics.firstPlayersName === state.statistics.firstPlayersName && game.statistics.secondPlayersName === state.statistics.secondPlayersName);
+            if (ind !== -1) {
+                savedGamesArray.splice(ind, 1);
+            }
+        }
+    }
+    localStorage.setItem("savedGames", JSON.stringify(savedGamesArray));
+
+    saveStatistics();
+
+    styleForNewGame(state.state);
 }
 
 //
