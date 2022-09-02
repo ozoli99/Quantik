@@ -12,6 +12,29 @@
         <h1 id="logo">Quantik</h1>
     </div>
 
+    <div id="startingPage">
+        <div id="rules">
+            <h2>Játékszabály</h2>
+            <p>A játék egy 4x4-es táblán játszódik, ami 4 egyenlő, 2x2-es részre van bontva.<br>A játékhoz négy, egymástól könnyen megkülönböztethető, alakzatot használhatunk, jelen esetben négyzetet, kört, háromszöget és X-et.<br>Mind a két játékosnak minden alakzatból 2-2 bábuja van, így összesen 8 alakzat található meg egy színből.<br>A játék célja az, hogy elsőként helyezzék le a játékosok a negyedik, többitől különböző formát egy sorba, oszlopba, vagy négyzet alakú területre (színtől függetlenül).<br>Ha egy cellára lehelyeztünk egy alakzatot, akkor annak sorába, oszlopába, vagy négyzet alakú területére nem tudja már egyik játékos sem még egyszer ugyanazt az alakzatot letenni.</p>
+        </div>
+
+        <div id="inputs">
+            Első játékos neve: <input type="text" id="firstPlayersName" value="1. játékos"><br>
+            Második játékos neve: <input type="text" id="secondPlayersName" value="2. játékos"><br>
+            <button id="start">Start</button>
+        </div>
+
+        <div id="saves">
+            <h2>Mentett játékok</h2>
+            <div id="savedGames"></div>
+        </div>
+
+        <div id="stats">
+            <h2>Statisztikák</h2>
+            <div id="statInfos"></div>
+        </div>
+    </div>
+
     <script type="module" src="index.js"></script>
 </body>
 </html>
