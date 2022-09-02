@@ -19,4 +19,10 @@ class AppState {
     board = [];
     firstPlayersFigures = [];
     secondPlayersFigures = [];
+    currentPlayer = Player.FIRST_PLAYER;
+    currentFigure = "";
+    currentColor = "";
+    winnerPlayer = Player.NO_PLAYER;
+    state = GameState.START_GAME;
+    figureCount = 0;
 }
