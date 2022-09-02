@@ -25,4 +25,23 @@ class AppState {
     winnerPlayer = Player.NO_PLAYER;
     state = GameState.START_GAME;
     figureCount = 0;
+
+    init(firstPlayersName, secondPlayersName) {
+        this.board = [];
+        for (let y = 0; y < this.width; ++y) {
+            this.board[y] = [];
+            for (let x = 0; x < this.height; ++x) {
+                this.board[y][x] = new Field();
+            }
+        }
+
+        this.firstPlayersFigures = ["square", "square", "circle", "circle", "triangle", "triangle", "x", "x"];
+        this.secondPlayersFigures = ["square", "square", "circle", "circle", "triangle", "triangle", "x", "x"];
+
+        this.currentFigure = "";
+        this.currentPlayer = Player.FIRST_PLAYER;
+        this.currentColor = "Black";
+        this.state = GameState.START_GAME;
+        this.figureCount = 0;
+    }
 }
