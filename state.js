@@ -1,19 +1,19 @@
 import { Field } from "./field.js";
 
-const Player = {
+export const Player = {
     FIRST_PLAYER: 1,
     SECOND_PLAYER: 2,
     NO_PLAYER: 4
 };
 
-const GameState = {
+export const GameState = {
     START_GAME: 1,
     NEW_GAME: 2,
     WON_GAME: 4,
     SELECT_FIGURE: 8
 };
 
-class AppState {
+export class AppState {
     width = 4;
     height = 4;
     board = [];
@@ -25,6 +25,12 @@ class AppState {
     winnerPlayer = Player.NO_PLAYER;
     state = GameState.START_GAME;
     figureCount = 0;
+    statistics = {
+        firstPlayersName: "",
+        secondPlayersName: "",
+        firstPlayersWins: 0,
+        secondPlayersWins: 0
+    };
 
     init(firstPlayersName, secondPlayersName) {
         this.board = [];
@@ -43,5 +49,8 @@ class AppState {
         this.currentColor = "Black";
         this.state = GameState.START_GAME;
         this.figureCount = 0;
+
+        this.statistics["firstPlayersName"] = firstPlayersName;
+        this.statistics["secondPlayersName"] = secondPlayersName;
     }
 }
