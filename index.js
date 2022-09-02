@@ -25,6 +25,42 @@ const firstPlayersCurrentFigures = document.querySelector("#firstPlayersCurrentF
 const secondPlayersCurrentFigures = document.querySelector("#secondPlayersCurrentFigures");
 
 //
+// Event listeners
+//
+
+saveButton.addEventListener("click", handleSaveButtonClick);
+startButton.addEventListener("click", handleStartButtonClick);
+savedGames.addEventListener("click", handleSavedGameClick);
+gameTable.addEventListener("click", handleFieldLeftClick);
+firstPlayersCurrentFigures.addEventListener("click", handleFigureLeftClick);
+secondPlayersCurrentFigures.addEventListener("click", handleFigureLeftClick);
+newGameButton.addEventListener("click", handleNewGameButtonClick);
+
+function handleSaveButtonClick() {
+
+}
+
+function handleStartButtonClick() {
+
+}
+
+function handleSavedGameClick(event) {
+
+}
+
+function handleFieldLeftClick(event) {
+
+}
+
+function handleFigureLeftClick(event) {
+
+}
+
+function handleNewGameButtonClick() {
+    
+}
+
+//
 // Helper functions
 //
 
