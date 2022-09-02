@@ -80,7 +80,39 @@ function handleStartButtonClick() {
 }
 
 function handleSavedGameClick(event) {
+    if (!event.target.matches("button")) return;
 
+    const extractPlayers = (string) => {
+        let [firstPlayer, rest] = string.split(' vs. ')
+        firstPlayer = firstPlayer.trim();
+        const secondPlayer = rest.split(' ').filter(x => x).slice(0, -1).join(' ').trim()
+        
+        return {firstPlayer, secondPlayer}
+    }
+
+    const names = extractPlayers(event.target.innerHTML);
+    const savedGamesArray = localStorage.getItem("savedGames") ? JSON.parse(localStorage.getItem("savedGames")) : [];
+
+    for (const savedGame of savedGamesArray) {
+        if (savedGame.statistics.firstPlayersName === names.firstPlayer && savedGame.statistics.secondPlayersName === names.secondPlayer) {
+            state.load(savedGame);
+            
+            styleForNewGame(state.state);
+
+            firstPlayersID.innerHTML = names.firstPlayer;
+            secondPlayersID.innerHTML = names.secondPlayer;
+            firstPlayersSign.innerHTML = names.firstPlayer;
+            secondPlayersSign.innerHTML = names.secondPlayer;
+
+            gameTable.innerHTML = renderTable(state.board);
+            firstPlayersCurrentFigures.innerHTML = renderFirstPlayersCurrentFigures(state.firstPlayersFigures);
+            secondPlayersCurrentFigures.innerHTML = renderSecondPlayersCurrentFigures(state.secondPlayersFigures);
+
+            styleForPlayerChange(state.currentPlayer);
+            
+            return;
+        }
+    }
 }
 
 function handleFieldLeftClick(event) {
