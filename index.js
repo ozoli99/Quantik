@@ -1,5 +1,5 @@
 import { AppState, Player, GameState } from "./state.js";
-import { renderSavedGames, renderStatInfos } from "./render.js";
+import { renderSavedGames, renderStatInfos, renderFirstPlayersCurrentFigures, renderGameArea, renderStartingPage, renderSecondPlayersCurrentFigures, renderTable } from "./render.js";
 
 const state = new AppState();
 const localStorage = window.localStorage;
@@ -116,7 +116,27 @@ function handleSavedGameClick(event) {
 }
 
 function handleFieldLeftClick(event) {
+    if (!event.target.matches("button")) return;
+    if (state.state === GameState.WON_GAME) return;
 
+    const td = event.target.parentNode;
+    const tr = td.parentNode;
+    const y = td.cellIndex;
+    const x = tr.rowIndex;
+
+    if (state.state === GameState.SELECT_FIGURE) {
+        state.step(x, y);
+    }
+
+    gameTable.innerHTML = renderTable(state.board);
+    firstPlayersCurrentFigures.innerHTML = renderFirstPlayersCurrentFigures(state.firstPlayersFigures);
+    secondPlayersCurrentFigures.innerHTML = renderSecondPlayersCurrentFigures(state.secondPlayersFigures);
+
+    if (state.checkForVictory(x, y)) {
+        styleForVictory(state.winnerPlayer);
+    } else {
+        styleForPlayerChange(state.currentPlayer);
+    }
 }
 
 function handleFigureLeftClick(event) {
@@ -177,6 +197,24 @@ function styleForPlayerChange(player) {
         secondPlayersID.style.fontWeight = "bold";
         firstPlayersID.style.fontWeight = "normal";
     }
+}
+
+function styleForVictory(player) {
+    if (player === Player.FIRST_PLAYER) {
+        firstPlayer.style.visibility = "visible";
+        secondPlayer.style.visibility = "hidden";
+        pawnBlack.src = "images/pawnBlack.png";
+        firstPlayersID.style.fontWeight = "bold";
+        informativeText.innerHTML = `${firstPlayersID.innerHTML} megnyerte a játékot!`;
+    } else if (player === Player.SECOND_PLAYER) {
+        firstPlayer.style.visibility = "hidden";
+        secondPlayer.style.visibility = "visible";
+        pawnWhite.src = "images/pawnWhite.png";
+        secondPlayersID.style.fontWeight = "bold";
+        informativeText.innerHTML = `${secondPlayersID.innerHTML} megnyerte a játékot!`;
+    }
+    informativeText.style.fontSize = "2em";
+    newGameButton.style.visibility = "visible";
 }
 
 function loadSavings() {
