@@ -63,7 +63,20 @@ function handleSaveButtonClick() {
 }
 
 function handleStartButtonClick() {
+    state.init(firstPlayersInput.value, secondPlayersInput.value);
 
+    styleForNewGame(state.state);
+
+    firstPlayersID.innerHTML = firstPlayersInput.value;
+    secondPlayersID.innerHTML = secondPlayersInput.value;
+    firstPlayersSign.innerHTML = firstPlayersInput.value;
+    secondPlayersSign.innerHTML = secondPlayersInput.value;
+
+    gameTable.innerHTML = renderTable(state.board);
+    firstPlayersCurrentFigures.innerHTML = renderFirstPlayersCurrentFigures(state.firstPlayersFigures);
+    secondPlayersCurrentFigures.innerHTML = renderSecondPlayersCurrentFigures(state.secondPlayersFigures);
+
+    styleForPlayerChange(state.currentPlayer);
 }
 
 function handleSavedGameClick(event) {
@@ -85,6 +98,54 @@ function handleNewGameButtonClick() {
 //
 // Helper functions
 //
+
+function styleForNewGame(state) {
+    if (state === GameState.NEW_GAME) {
+        gameArea.style.visibility = "hidden";
+        saveButton.style.visibility = "hidden";
+        newGameButton.style.visibility = "hidden";
+        firstPlayer.style.visibility = "hidden";
+        secondPlayer.style.visibility = "hidden";
+
+        startingPage.innerHTML = renderStartingPage();
+        
+        firstPlayersInput = document.querySelector("#firstPlayersName");
+        secondPlayersInput = document.querySelector("#secondPlayersName");
+
+        firstPlayersInput.value = firstPlayersID.innerHTML;
+        secondPlayersInput.value = secondPlayersID.innerHTML;
+        
+        savedGames = document.querySelector("#savedGames");
+        statInfos = document.querySelector("#statInfos");
+
+        loadSavings();
+        
+        startButton = document.querySelector("#start");
+        startButton.addEventListener("click", handleStartButtonClick);
+    } else {
+        gameArea.style.visibility = "visible";
+        saveButton.style.visibility = "visible";
+        startingPage.innerHTML = ``;
+    }
+}
+
+function styleForPlayerChange(player) {
+    firstPlayer.style.visibility = "visible";
+    secondPlayer.style.visibility = "visible";
+    informativeText.innerHTML = `vs`;
+    newGameButton.style.visibility = "hidden";
+    if (player === Player.FIRST_PLAYER) {
+        pawnBlack.src = "images/pawnBlack.png";
+        pawnWhite.src = "images/pawnGray.png";
+        firstPlayersID.style.fontWeight = "bold";
+        secondPlayersID.style.fontWeight = "normal";
+    } else if (player === Player.SECOND_PLAYER) {
+        pawnWhite.src = "images/pawnWhite.png";
+        pawnBlack.src = "images/pawnGray.png";
+        secondPlayersID.style.fontWeight = "bold";
+        firstPlayersID.style.fontWeight = "normal";
+    }
+}
 
 function loadSavings() {
     let savedGamesArray = localStorage.getItem("savedGames") ? JSON.parse(localStorage.getItem("savedGames")) : [];
