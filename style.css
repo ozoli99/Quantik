@@ -1,1 +1,99 @@
+body {
+    background: url("images/background.jpg");
+}
 
+#logo {
+    grid-area: logo;
+    font-size: 5em;
+    text-align: left;
+    margin: 0 0 10px 0;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+#rules {
+    grid-area: rules;
+}
+#inputs {
+    grid-area: inputs;
+    margin: 200px 0 0 0;
+}
+#saves {
+    grid-area: saves;
+}
+#stats {
+    grid-area: stats;
+}
+#startingPage {
+    visibility: visible;
+    text-align: center;
+    font-size: 1.5em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+    'stats inputs saves'
+    'rules rules rules';
+}
+
+#rules p {
+    text-align: center;
+}
+
+#savedGames ul {
+    list-style: none;
+}
+#savedGames button {
+    background-color: rgba(171, 171, 169, 0.5);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin: 0 0 5px 0;
+    width: 100%;
+    height: 40px;
+    font-size: 1.1em;
+}
+
+#statInfos ul {
+    list-style: none;
+}
+#statInfos li {
+    background-color: rgba(171, 171, 169, 0.5);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin: 0 0 5px 0;
+    width: 100%;
+    height: 40px;
+    font-size: 1.1em;
+}
+
+#start {
+    background-color: rgba(171, 171, 169, 0.5);
+    color: white;
+    font-size: 1.1em;
+    margin: 20px;
+    border: none;
+    border-radius: 10px;
+    width: 100px;
+    height: 35px;
+}
+
+#firstPlayersName {
+    background-color: rgba(171, 171, 169, 0.5);
+    color: white;
+    margin: 0 0 0 40px;
+    border: none;
+    border-radius: 10px;
+    height: 25px;
+}
+
+#secondPlayersName {
+    background-color: rgba(171, 171, 169, 0.5);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    height: 25px;
+}
