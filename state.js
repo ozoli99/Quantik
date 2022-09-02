@@ -115,4 +115,64 @@ export class AppState {
             }
         }
     }
+
+    setCanStepOnByItem(y, x) {
+        for (let i = 0; i < 4; ++i) {
+            this.board[y][i].canStepOn = false;
+            this.board[i][x].canStepOn = false;
+        }
+        const indY = Math.floor(y/2);
+        const indX = Math.floor(x/2);
+        if (indY === 0 && indX === 0) {
+            this.board[0][0].canStepOn = false;
+            this.board[0][1].canStepOn = false;
+            this.board[1][0].canStepOn = false;
+            this.board[1][1].canStepOn = false;
+        } else if (indY === 0 && indX === 1) {
+            this.board[0][2].canStepOn = false;
+            this.board[0][3].canStepOn = false;
+            this.board[1][2].canStepOn = false;
+            this.board[1][3].canStepOn = false;
+        } else if (indY === 1 && indX === 0) {
+            this.board[2][0].canStepOn = false;
+            this.board[2][1].canStepOn = false;
+            this.board[3][0].canStepOn = false;
+            this.board[3][1].canStepOn = false;
+        } else if (indY === 1 && indX === 1) {
+            this.board[2
+            ][2].canStepOn = false;
+            this.board[2][3].canStepOn = false;
+            this.board[3][2].canStepOn = false;
+            this.board[3][3].canStepOn = false;
+        }
+    }
+
+    step(x, y) {
+        if (!this.board[x][y].canStepOn) return;
+        if (this.currentPlayer === Player.FIRST_PLAYER && this.currentColor === "White") return;
+        if (this.currentPlayer === Player.SECOND_PLAYER && this.currentColor === "Black") return;
+
+        this.board[x][y].item = this.currentFigure;
+        this.board[x][y].itemColor = this.currentColor;
+        if (this.currentPlayer === Player.FIRST_PLAYER) {
+            const index = this.firstPlayersFigures.indexOf(this.currentFigure);
+            if (index > -1) this.firstPlayersFigures.splice(index, 1);
+        } else {
+            const index = this.secondPlayersFigures.indexOf(this.currentFigure);
+            if (index > -1) this.secondPlayersFigures.splice(index, 1);
+        }
+
+        this.clearCanStepOn();
+
+        this.figureCount++;
+        this.currentPlayer = this.currentPlayer === Player.FIRST_PLAYER ? Player.SECOND_PLAYER : Player.FIRST_PLAYER;
+    }
+
+    clearCanStepOn() {
+        for (let y = 0; y < 4; ++y) {
+            for (let x = 0; x < 4; ++x) {
+                this.board[y][x].canStepOn = true;
+            }
+        }
+    }
 }
