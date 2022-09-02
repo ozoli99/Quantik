@@ -175,4 +175,51 @@ export class AppState {
             }
         }
     }
+
+    checkForVictory(x, y) {
+        let figuresVertical = [];
+        let figuresHorizontal = [];
+        let figuresSquare = [];
+        
+        for (let i = 0; i < 4; ++i) {
+            figuresVertical.push(this.board[x][i].item);
+            figuresHorizontal.push(this.board[i][y].item);
+        }
+        const indY = Math.floor(y/2);
+        const indX = Math.floor(x/2);
+        if (indX === 0 && indY === 0) {
+            figuresSquare.push(this.board[0][0].item);
+            figuresSquare.push(this.board[0][1].item);
+            figuresSquare.push(this.board[1][0].item);
+            figuresSquare.push(this.board[1][1].item);
+        } else if (indX === 0 && indY === 1) {
+            figuresSquare.push(this.board[0][2].item);
+            figuresSquare.push(this.board[0][3].item);
+            figuresSquare.push(this.board[1][2].item);
+            figuresSquare.push(this.board[1][3].item);
+        } else if (indX === 1 && indY === 0) {
+            figuresSquare.push(this.board[2][0].item);
+            figuresSquare.push(this.board[2][1].item);
+            figuresSquare.push(this.board[3][0].item);
+            figuresSquare.push(this.board[3][1].item);
+        } else if (indX === 1 && indY === 1) {
+            figuresSquare.push(this.board[2][2].item);
+            figuresSquare.push(this.board[2][3].item);
+            figuresSquare.push(this.board[3][2].item);
+            figuresSquare.push(this.board[3][3].item);
+        }
+
+        figuresVertical = [... new Set(figuresVertical)];
+        figuresHorizontal = [... new Set(figuresHorizontal)];
+        figuresSquare = [... new Set(figuresSquare)];
+
+        if ((figuresVertical.length === 4 && !figuresVertical.includes("")) || (figuresHorizontal.length === 4 && !figuresHorizontal.includes("")) || (figuresSquare.length === 4 && !figuresSquare.includes(""))) {
+            this.state = GameState.WON_GAME;
+            this.winnerPlayer = this.currentPlayer === Player.FIRST_PLAYER ? Player.SECOND_PLAYER : Player.FIRST_PLAYER;
+            this.statistics["firstPlayersWins"] = this.winnerPlayer === Player.FIRST_PLAYER ? this.statistics["firstPlayersWins"] + 1 : this.statistics["firstPlayersWins"];
+            this.statistics["secondPlayersWins"] = this.winnerPlayer === Player.SECOND_PLAYER ? this.statistics["secondPlayersWins"] + 1 : this.statistics["secondPlayersWins"];
+            return true;
+        }
+        return false;
+    }
 }
