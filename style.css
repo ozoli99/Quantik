@@ -8,6 +8,22 @@ body {
     text-align: left;
     margin: 0 0 10px 0;
 }
+#saveButton {
+    grid-area: saveButton;
+    background-color: rgba(171, 171, 169, 0.5);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+    margin: 20px 0 0 0;
+}
+#header {
+    display: grid;
+    grid-template-columns: 12fr 1fr;
+    grid-template-areas: 
+    'logo saveButton';
+}
 
 h2 {
     font-size: 2em;
@@ -97,3 +113,225 @@ h2 {
     border-radius: 10px;
     height: 25px;
 }
+
+#gameTable {
+    grid-area: gameTable;
+}
+#infos {
+    grid-area: infos;
+}
+#firstPlayersFigures {
+    grid-area: firstPlayersFigures;
+}
+#secondPlayersFigures {
+    grid-area: secondPlayersFigures;
+}
+#gameArea {
+    width: 100%;
+    height: 500px;
+    visibility: hidden;
+    font-size: 1.1em;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    grid-template-areas: 
+    'firstPlayersFigures gameTable secondPlayersFigures'
+    'infos infos infos';
+}
+
+#firstPlayer {
+    grid-area: firstPlayer;
+}
+#informativeText {
+    grid-area: informativeText;
+    text-align: center;
+    margin: 40px 0 0 0;
+    font-size: 1.4em;
+}
+#newGame {
+    grid-area: newGame;
+    visibility: hidden;
+    width: 100px;
+    margin: 10px 0 50px 175px;
+}
+#secondPlayer {
+    grid-area: secondPlayer;
+}
+#infos {
+    background-color: rgba(171, 171, 169, 0.5);
+    height: 150px;
+    border-radius: 10px;
+    margin: 40px 500px 0 500px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 4fr 1fr;
+    grid-template-areas: 
+    'firstPlayer informativeText secondPlayer'
+    'firstPlayer newGame secondPlayer';
+}
+
+#pawnBlack {
+    grid-area: pawnBlack;
+    width: 100px;
+    margin: 0;
+}
+#firstPlayersID {
+    grid-area: firstPlayersID;
+    margin: 0 0 0 15px;
+    font-size: 1.2em;
+}
+#firstPlayer {
+    display: grid;
+    margin: 10px 0 0 100px;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    'pawnBlack'
+    'firstPlayersID';
+    grid-template-rows: 2fr 1fr;
+}
+
+#pawnWhite {
+    grid-area: pawnWhite;
+    width: 100px;
+    margin: 0;
+}
+#secondPlayersID {
+    grid-area: secondPlayersID;
+    margin: 0 0 0 15px;
+    font-size: 1.2em;
+}
+#secondPlayer {
+    display: grid;
+    margin: 10px 0 0 0;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    'pawnWhite'
+    'secondPlayersID';
+    grid-template-rows: 2fr 1fr;
+}
+
+#firstPlayersSign {
+    grid-area: firstPlayersSign;
+    text-align: center;
+    background-color: rgb(87, 89, 87);
+    border-radius: 10px 10px 0 0;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+#firstPlayersCurrentFigures {
+    grid-area: firstPlayersCurrentFigures;
+}
+#firstPlayersFigures {
+    background-color: rgba(171, 171, 169, 0.5);
+    height: 300px;
+    border-radius: 10px;
+    margin: 150px 5px 5px 5px;
+    display: grid;
+    grid-template-rows: 1fr 20fr;
+    grid-template-areas: 
+    'firstPlayersSign'
+    'firstPlayersCurrentFigures';
+}
+
+#secondPlayersSign {
+    grid-area: secondPlayersSign;
+    text-align: center;
+    background-color: rgb(87, 89, 87);
+    border-radius: 10px 10px 0 0;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+#secondPlayersCurrentFigures {
+    grid-area: secondPlayersCurrentFigures;
+}
+#secondPlayersFigures {
+    background-color: rgba(171, 171, 169, 0.5);
+    height: 300px;
+    border-radius: 10px;
+    margin: 150px 5px 5px 5px;
+    display: grid;
+    grid-template-rows: 1fr 20fr;
+    grid-template-areas: 
+    'secondPlayersSign'
+    'secondPlayersCurrentFigures';
+}
+
+#firstPlayersCurrentFigures img {
+    width: 80px;
+    margin: 20px 0 5px 30px;
+}
+#firstPlayersCurrentFigures td {
+    background-color: rgb(171, 171, 169);
+    border: none;
+}
+
+#secondPlayersCurrentFigures img {
+    width: 80px;
+    margin: 20px 0 5px 30px;
+}
+#secondPlayersCurrentFigures td {
+    background-color: rgb(171, 171, 169);
+    border: none;
+}
+
+
+
+#gameTable {
+    margin: 50px 0 0 200px;
+    border-collapse: collapse;
+}
+#gameTable td, td > button {
+    background-color: transparent;
+    border: transparent;
+    width: 100px;
+    height: 100px;
+}
+#gameTable td, td > img {
+    width: 80px;
+    height: 80px;
+}
+#gameTable td {
+    border: solid white 2px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: Consolas, monospace;
+    font-weight: bold;
+}
+
+
+
+#gameTable tr:nth-of-type(1) td:nth-of-type(1) { background-color: gray; width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(1) td:nth-of-type(2) { background-color: gray; width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(2) td:nth-of-type(1) { background-color: gray; width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(2) td:nth-of-type(2) { background-color: gray; width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(1) td:nth-of-type(3) { background-color: rgb(255, 231, 122); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(1) td:nth-of-type(4) { background-color: rgb(255, 231, 122); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(2) td:nth-of-type(3) { background-color: rgb(255, 231, 122); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(2) td:nth-of-type(4) { background-color: rgb(255, 231, 122); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(3) td:nth-of-type(1) { background-color: rgb(255, 231, 122); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(3) td:nth-of-type(2) { background-color: rgb(255, 231, 122); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(4) td:nth-of-type(1) { background-color: rgb(255, 231, 122); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(4) td:nth-of-type(2) { background-color: rgb(255, 231, 122); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(3) td:nth-of-type(3) { background-color: gray; width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(3) td:nth-of-type(4) { background-color: gray; width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(4) td:nth-of-type(3) { background-color: gray; width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(4) td:nth-of-type(4) { background-color: gray; width: 130px; height: 130px; }
+
+#gameTable tr:nth-of-type(1) td:nth-of-type(1).canStepOn { background-color: rgb(103, 48, 19); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(1) td:nth-of-type(2).canStepOn { background-color: rgb(103, 48, 19); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(2) td:nth-of-type(1).canStepOn { background-color: rgb(103, 48, 19); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(2) td:nth-of-type(2).canStepOn { background-color: rgb(103, 48, 19); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(1) td:nth-of-type(3).canStepOn { background-color: rgb(178, 114, 80); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(1) td:nth-of-type(4).canStepOn { background-color: rgb(178, 114, 80); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(2) td:nth-of-type(3).canStepOn { background-color: rgb(178, 114, 80); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(2) td:nth-of-type(4).canStepOn { background-color: rgb(178, 114, 80); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(3) td:nth-of-type(1).canStepOn { background-color: rgb(178, 114, 80); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(3) td:nth-of-type(2).canStepOn { background-color: rgb(178, 114, 80); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(4) td:nth-of-type(1).canStepOn { background-color: rgb(178, 114, 80); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(4) td:nth-of-type(2).canStepOn { background-color: rgb(178, 114, 80); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(3) td:nth-of-type(3).canStepOn { background-color: rgb(103, 48, 19); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(3) td:nth-of-type(4).canStepOn { background-color: rgb(103, 48, 19); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(4) td:nth-of-type(3).canStepOn { background-color: rgb(103, 48, 19); width: 130px; height: 130px; }
+#gameTable tr:nth-of-type(4) td:nth-of-type(4).canStepOn { background-color: rgb(103, 48, 19); width: 130px; height: 130px; }
