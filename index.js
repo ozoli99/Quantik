@@ -140,7 +140,17 @@ function handleFieldLeftClick(event) {
 }
 
 function handleFigureLeftClick(event) {
+    if (!event.target.matches("img")) return;
+    if (state.state === GameState.WON_GAME) return;
 
+    if (state.state === GameState.SELECT_FIGURE) {
+        state.clearCanStepOn();
+    }
+
+    const imgSource = event.target.src.split('/').pop();
+    state.showPossibleSteps(imgSource);
+
+    gameTable.innerHTML = renderTable(state.board);
 }
 
 function handleNewGameButtonClick() {
