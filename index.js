@@ -7,6 +7,22 @@ let statInfos = document.querySelector("#statInfos");
 let firstPlayersInput = document.querySelector("#firstPlayersName");
 let secondPlayersInput = document.querySelector("#secondPlayersName");
 let startButton = document.querySelector("#start");
+const saveButton = document.querySelector("#saveButton");
+const startingPage = document.querySelector("#startingPage");
+const gameArea = document.querySelector("#gameArea");
+const gameTable = document.querySelector("#gameTable");
+const firstPlayer = document.querySelector("#firstPlayer");
+const secondPlayer = document.querySelector("#secondPlayer");
+const pawnBlack = document.querySelector("#pawnBlack");
+const pawnWhite = document.querySelector("#pawnWhite");
+const firstPlayersID = document.querySelector("#firstPlayersID");
+const secondPlayersID = document.querySelector("#secondPlayersID");
+const informativeText = document.querySelector("#informativeText");
+const newGameButton = document.querySelector("#newGame");
+const firstPlayersSign = document.querySelector("#firstPlayersSign");
+const secondPlayersSign = document.querySelector("#secondPlayersSign");
+const firstPlayersCurrentFigures = document.querySelector("#firstPlayersCurrentFigures");
+const secondPlayersCurrentFigures = document.querySelector("#secondPlayersCurrentFigures");
 
 //
 // Helper functions
