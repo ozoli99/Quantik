@@ -69,4 +69,50 @@ export class AppState {
         this.statistics["firstPlayersName"] = stateToLoad.statistics["firstPlayersName"];
         this.statistics["secondPlayersName"] = stateToLoad.statistics["secondPlayersName"];
     }
+
+    showPossibleSteps(imgSource) {
+        this.state = GameState.SELECT_FIGURE;
+
+        if (this.currentPlayer === Player.FIRST_PLAYER) {
+            if (imgSource === "squareBlack.png") {
+                this.currentFigure = "square";
+                this.currentColor = "Black";
+            } else if (imgSource === "circleBlack.png") {
+                this.currentFigure = "circle";
+                this.currentColor = "Black";
+            } else if (imgSource === "triangleBlack.png") {
+                this.currentFigure = "triangle";
+                this.currentColor = "Black";
+            } else if (imgSource === "xBlack.png") {
+                this.currentFigure = "x";
+                this.currentColor = "Black";
+            } else {
+                return;
+            }
+        } else {
+            if (imgSource === "squareWhite.png") {
+                this.currentFigure = "square";
+                this.currentColor = "White";
+            } else if (imgSource === "circleWhite.png") {
+                this.currentFigure = "circle";
+                this.currentColor = "White";
+            } else if (imgSource === "triangleWhite.png") {
+                this.currentFigure = "triangle";
+                this.currentColor = "White";
+            } else if (imgSource === "xWhite.png") {
+                this.currentFigure = "x";
+                this.currentColor = "White";
+            } else {
+                return;
+            }
+        }
+        
+        for (let y = 0; y < 4; ++y) {
+            for (let x = 0; x < 4; ++x) {
+                if (this.board[y][x].item === this.currentFigure) {
+                    this.setCanStepOnByItem(y, x);
+                }
+            }
+        }
+    }
 }
