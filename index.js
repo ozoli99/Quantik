@@ -1,5 +1,7 @@
+import { AppState, Player, GameState } from "./state.js";
 import { renderSavedGames, renderStatInfos } from "./render.js";
 
+const state = new AppState();
 const localStorage = window.localStorage;
 
 let savedGames = document.querySelector("#savedGames");
@@ -37,7 +39,27 @@ secondPlayersCurrentFigures.addEventListener("click", handleFigureLeftClick);
 newGameButton.addEventListener("click", handleNewGameButtonClick);
 
 function handleSaveButtonClick() {
+    saveStatistics();
 
+    if (state.state !== GameState.WON_GAME) {
+        let savedGamesArray = localStorage.getItem("savedGames") ? JSON.parse(localStorage.getItem("savedGames")) : [];
+        const savedGameState = {
+            board: state.board,
+            firstPlayersFigures: state.firstPlayersFigures,
+            secondPlayersFigures: state.secondPlayersFigures,
+            currentPlayer: state.currentPlayer,
+            currentFigure: state.currentFigure,
+            currentColor: state.currentColor,
+            winnerPlayer: state.winnerPlayer,
+            state: state.state,
+            figureCount: state.figureCount,
+            statistics: state.statistics
+        };
+        savedGamesArray.push(savedGameState);
+        localStorage.setItem("savedGames", JSON.stringify(savedGamesArray));
+    }
+
+    saveButton.style.border = "solid green 1px";
 }
 
 function handleStartButtonClick() {
@@ -57,7 +79,7 @@ function handleFigureLeftClick(event) {
 }
 
 function handleNewGameButtonClick() {
-    
+
 }
 
 //
@@ -70,4 +92,27 @@ function loadSavings() {
 
     savedGames.innerHTML = renderSavedGames(savedGamesArray);
     statInfos.innerHTML = renderStatInfos(statInfosArray);
+}
+
+function saveStatistics() {
+    let statisticsArray = localStorage.getItem("statistics") ? JSON.parse(localStorage.getItem("statistics")) : [];
+    let statistics = statisticsArray.find(stat => stat.firstPlayersName === state.statistics.firstPlayersName && stat.secondPlayersName === state.statistics.secondPlayersName);
+    if (statistics === undefined) {
+        statistics = {
+            firstPlayersName: state.statistics.firstPlayersName,
+            secondPlayersName: state.statistics.secondPlayersName,
+            firstPlayersWin: state.statistics.firstPlayersWin,
+            secondPlayersWin: state.statistics.secondPlayersWin,
+        };
+    } else {
+        const ind = statisticsArray.findIndex(stat => stat.firstPlayersName === state.statistics.firstPlayersName && stat.secondPlayersName === state.statistics.secondPlayersName);
+        if (ind !== -1) {
+            statisticsArray.splice(ind, 1);
+        }
+
+        statistics["firstPlayersWins"] = state.statistics.firstPlayersWins;
+        statistics["secondPlayersWins"] = state.statistics.secondPlayersWins;
+    }
+    statisticsArray.push(statistics);
+    localStorage.setItem("statistics", JSON.stringify(statisticsArray));
 }
