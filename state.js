@@ -53,4 +53,20 @@ export class AppState {
         this.statistics["firstPlayersName"] = firstPlayersName;
         this.statistics["secondPlayersName"] = secondPlayersName;
     }
+
+    load(stateToLoad) {
+        this.board = stateToLoad.board;
+
+        this.firstPlayersFigures = stateToLoad.firstPlayersFigures;
+        this.secondPlayersFigures = stateToLoad.secondPlayersFigures;
+
+        this.currentFigure = stateToLoad.currentFigure;
+        this.currentPlayer = stateToLoad.currentPlayer;
+        this.currentColor = stateToLoad.currentColor;
+        this.state = stateToLoad.state;
+        this.figureCount = stateToLoad.figureCount;
+
+        this.statistics["firstPlayersName"] = stateToLoad.statistics["firstPlayersName"];
+        this.statistics["secondPlayersName"] = stateToLoad.statistics["secondPlayersName"];
+    }
 }
