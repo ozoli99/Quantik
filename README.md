@@ -1,6 +1,6 @@
 # Quantik - HTML, CSS, JavaScript
 Egyszerű kétszemélyes játék. Egy 4x4-es táblán játszódik, ami 4 egyenlő, 2x2-es részre van bontva. A játékhoz négy, egymástól könnyen megkülönböztethető alakzatot használhatunk, jelen esetben négyzetet, kört, háromszöget és X-et. Mind a két játékosnak minden alakzatból 2-2 bábuja van, így összesen 8 alakzat található meg egy színből. A játék célja az, hogy elsőként helyezzék le a játékosok a negyedik, többitől különböző formát egy sorba, oszlopba, vagy négyzet alakú területre (színtől függetlenül). Ha egy cellára lehelyeztünk egy alakzatot, akkor annak sorába, oszlopába, vagy négyzet alakú területére nem tudja már egyik játékos sem még egyszer ugyanazt az alakzatot letenni.
-
+![Main page](https://github.com/ozoli99/Quantik/blob/main/images/MainGame.png)
 Mivel a színek nem számítanak, nyerhetünk csupán úgy is, hogy mind a három másik alakzatot a másik játékos tette le, mi pedig a negyedik bábut helyeztük le.
 
 ## A játék megvalósítása
@@ -18,6 +18,7 @@ A játék nyitólapján megjelenik
 Két játékos lehet. A nyitólapon megadható a nevük, alapértelmezetten "1. játékos" és "2. játékos".
 Ha vannak félbehagyott játékok, akkor azoknak a listája is ezen az oldalon jelenik meg. A lista egy eleme a mentés dátumát, és a kitöltés %-os arányát tartalmazza. Rákattintva az adott állás töltődik be.
 Egy "Start" feliratú gomb lenyomására indul a játék.
+![Landing page](https://github.com/ozoli99/Quantik/blob/main/images/LandingPage.png)
 
 ### Játékoldal
 - A játék indítása után megjelenik az üres tábla.
